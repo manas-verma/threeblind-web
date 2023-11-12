@@ -1,7 +1,6 @@
 "use client";
-import { Corner, Edge, MemoSettings } from "@/types";
+import { Corner, Edge } from "@/types";
 import { useCallback, useEffect, useState } from "react";
-import { useSettings } from "../hooks/useSettings";
 
 type Props = {
   color: string;
@@ -11,7 +10,6 @@ type Props = {
 
 export function Sticker(props: Props) {
   const { color, edge, corner } = props;
-  const { settings, setSettings } = useSettings();
 
   const [value, setValue] = useState("");
   const key = useCallback(
@@ -19,56 +17,26 @@ export function Sticker(props: Props) {
     [color, edge, corner]
   );
 
-  const updateSettings = useCallback(
-    (
-      memoString: string,
-      settings: MemoSettings,
-      edge?: Edge,
-      corner?: Corner
-    ) => {
-      setSettings({
-        ...settings,
-        ...(edge
-          ? {
-              reverseEdgeMapping: {
-                ...settings.reverseEdgeMapping,
-                [memoString]: edge,
-              },
-            }
-          : corner
-          ? {
-              reverseCornerMapping: {
-                ...settings.reverseCornerMapping,
-                [memoString]: corner,
-              },
-            }
-          : {}),
-      });
-    },
-    [setSettings]
-  );
-
   useEffect(() => {
-    const newValue = localStorage.getItem(key()) ?? "";
+    const key = JSON.stringify({ color, edge, corner });
+    const newValue = localStorage.getItem(key) ?? "";
     setValue(newValue);
-    updateSettings(newValue, settings, edge, corner);
-  }, [key, updateSettings, settings, edge, corner]);
+  }, [color, edge, corner]);
 
   const onChange = (memoString: string) => {
     setValue(memoString);
     localStorage.setItem(key(), memoString);
-    updateSettings(memoString, settings, edge, corner);
   };
 
   return (
     <div
-      className="h-16 w-16"
+      className="h-12 w-12"
       style={{
         backgroundColor: color,
       }}
     >
       <input
-        className={`h-16 w-16 ${
+        className={`h-12 w-12 ${
           color == "white" || color == "yellow" ? "text-black" : "text-white"
         } bg-transparent text-center text-lg`}
         value={value}
