@@ -26,6 +26,8 @@ export const makeClient = () => {
           parity_edges: memoCreate.parityEdges,
           reverse_corner_mapping: memoCreate.reverseCornerMapping,
           reverse_edge_mapping: memoCreate.reverseEdgeMapping,
+          edge_preference: memoCreate.edgePreference ?? null,
+          corner_preference: memoCreate.cornerPreference ?? null,
         });
       },
     },

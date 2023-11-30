@@ -38,6 +38,8 @@ export type MemoCreate = {
   parityEdges: [Edge, Edge];
   reverseCornerMapping: Record<string, Corner>;
   reverseEdgeMapping: Record<string, Edge>;
+  edgePreference: string[] | null;
+  cornerPreference: string[] | null;
 };
 
 export type MemoSettings = Omit<MemoCreate, "scramble">;

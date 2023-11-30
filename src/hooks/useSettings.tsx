@@ -23,6 +23,8 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
     ],
     reverseCornerMapping: {},
     reverseEdgeMapping: {},
+    edgePreference: null,
+    cornerPreference: null,
   });
 
   return (

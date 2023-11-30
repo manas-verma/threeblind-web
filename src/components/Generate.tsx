@@ -1,5 +1,6 @@
 "use client";
 import { client } from "@/client";
+import StickerPreferences from "@/components/StickerPreferences";
 import { useSettings } from "@/hooks/useSettings";
 import { Edge, Memo } from "@/types";
 import { guard } from "radash";
@@ -87,11 +88,12 @@ export function Generate() {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4 p-6 w-full">
+      <StickerPreferences />
       <div className="flex flex-col items-center justify-center w-full h-full border-white">
         Scramble
       </div>
       <input
-        className={`w-full bg-transparent text-center text-lg text-white`}
+        className={`w-full bg-transparent text-center text-lg`}
         value={scramble}
         type="text"
         onChange={(e) => onChange(e.target.value)}
