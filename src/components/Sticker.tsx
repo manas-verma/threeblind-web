@@ -41,6 +41,7 @@ export function Sticker(props: Props) {
         } bg-transparent text-center text-lg`}
         value={value}
         type="text"
+        disabled={edge === undefined && corner === undefined}
         maxLength={2}
         onChange={(e) => onChange(e.target.value)}
       />
