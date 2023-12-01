@@ -46,7 +46,7 @@ export default function Preferences() {
         Edge Preferences (space separated memo letters)
       </div>
       <input
-        className={`w-full bg-transparent text-center text-lg`}
+        className={`w-full bg-transparent text-center text-lg text-[var(--text-color)]`}
         value={edgePreference?.join(" ") ?? ""}
         type="text"
         onChange={(e) => _setEdgePreference(e.target.value.split(" "))}

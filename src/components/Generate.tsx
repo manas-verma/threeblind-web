@@ -93,7 +93,7 @@ export function Generate() {
         Scramble
       </div>
       <input
-        className={`w-full bg-transparent text-center text-lg`}
+        className={`w-full bg-transparent text-center text-lg text-[var(--text-color)]`}
         value={scramble}
         type="text"
         onChange={(e) => onChange(e.target.value)}
